@@ -1,0 +1,74 @@
+{
+	"name": "wheelchair-client",
+	"productName": "Wheel Chair",
+	"version": "0.0.0",
+	"description": "Gonna put you in a wheel chair.",
+	"license": "MIT",
+	"repository": "MasterP-kr/WheelChair-Client",
+	"author": {
+		"name": "Master P",
+		"email": "no-reply@noemail.com",
+		"url": "https://github.com/MasterP-kr"
+	},
+	"scripts": {
+		"postinstall": "electron-builder install-app-deps",
+		"start": "electron .",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder --macos --linux --windows",
+		"release": "np"
+	},
+	"dependencies": {
+		"electron-context-menu": "^0.15.0",
+		"electron-debug": "^3.0.0",
+		"electron-localshortcut": "^3.2.1",
+		"electron-store": "^5.1.0",
+		"electron-unhandled": "^3.0.1",
+		"electron-updater": "^4.2.0",
+		"electron-util": "^0.13.0"
+	},
+	"devDependencies": {
+		"electron": "^7.1.1",
+		"electron-builder": "^21.2.0",
+		"np": "^5.1.3",
+		"xo": "^0.25.3"
+	},
+	"xo": {
+		"envs": [
+			"node",
+			"browser"
+		]
+	},
+	"np": {
+		"publish": "always",
+		"releaseDraft": false
+	},
+	"build": {
+		"appId": "com.none.WheelChair",
+		"mac": {
+			"category": "public.app-category.games",
+			"darkModeSupport": true
+		},
+		"dmg": {
+			"iconSize": 160,
+			"contents": [
+				{
+					"x": 180,
+					"y": 170
+				},
+				{
+					"x": 480,
+					"y": 170,
+					"type": "link",
+					"path": "/Applications"
+				}
+			]
+		},
+		"linux": {
+			"target": [
+				"AppImage",
+				"deb"
+			],
+			"category": "Network;Chat"
+		}
+	}
+}
