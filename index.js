@@ -13,15 +13,12 @@ const {
 const unhandled = require('electron-unhandled');
 const debug = require('electron-debug');
 const contextMenu = require('electron-context-menu');
-const config = require('./config');
-const packageJson = require('./package.json');
 const hotkeys = require('electron-localshortcut')
 
 unhandled();
 debug();
 contextMenu();
 
-app.setAppUserModelId(packageJson.build.appId);
 
 if (!is.development) {
 	const FOUR_HOURS = 1000 * 60 * 60 * 4;
