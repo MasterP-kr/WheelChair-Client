@@ -19,7 +19,6 @@ module.exports = async () => {
     }
   })
   win.setMenu(null)
-  win.webContents.openDevTools({ mode: 'undocked' })
   win.on('ready-to-show', () => {
     win.show()
   })
