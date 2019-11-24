@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Wheel Chair Updater</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<style>
+		html,
+		body {
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			font-family: 'Lato', sans-serif;
+		}
+
+		body {
+			background: #fefefe
+		}
+
+		.container {
+			display: flex;
+			flex-flow: column wrap;
+			width: 100%;
+		}
+
+		.center {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-flow: column wrap;
+		}
+
+		.hide {
+			display: none;
+		}
+
+	</style>
+</head>
+
+<body class="center">
+	<h1>Wheel Chair</h1>
+	<div class="container center" id="version-container">
+		Current version: <span id="version">vX.Y.Z</span>
+	</div>
+	<button class="hide " id="update-button">
+		Update Client
+	</button>
+	<div id="messages"></div>
+	<script>
+		const {
+			ipcRenderer
+		} = require('electron')
+
+		const message = document.getElementById('version');
+		const versionContainer = document.getElementById('version-container');
+		const updateButton = document.getElementById('update-button');
+		const messages = document.getElementById('messages');
+		let versionHash = window.location.hash.substring(1).replace("v", "");
+		message.innerText = versionHash;
+		updateButton.addEventListener("click", () => {
+			window.open(`https://github.com/MasterP-kr/WheelChair-Client/releases/tag/v${updateButton.getAttribute("version")}`)
+		})
+		fetch('https://raw.githubusercontent.com/MasterP-kr/WheelChair-Client/master/package.json')
+			.then(data => data.json())
+			.then(({
+				version
+			}) => {
+				if (version !== versionHash) {
+					versionContainer.classList.add("hide")
+					updateButton.classList.remove("hide")
+				} else {
+					ipcRenderer.send('start-game')
+				}
+			})
+			.catch(error => {
+				messages.innerText = "Error Getting Version";
+			})
+
+	</script>
+</body>
+
+</html>
