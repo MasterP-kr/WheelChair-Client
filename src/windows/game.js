@@ -1,13 +1,13 @@
 const path = require('path')
 
-const { BrowserWindow } = require('electron')
+const { BrowserWindow, app } = require('electron')
 const { windows, UPDATE_WINDOW, GAME_WINDOW, store } = require('../config')
 /**
  * Create browser window for krunker.io
  */
 module.exports = async () => {
   // load wheel chair extension
-  BrowserWindow.addExtension(path.join(__dirname, '..\\extensions'))
+  BrowserWindow.addExtension(path.join(app.getAppPath(), '..\\extensions'))
   const win = new BrowserWindow({
     show: false,
     darkTheme: true,
@@ -22,7 +22,7 @@ module.exports = async () => {
   win.loadURL('https://krunker.io')
 
   win.on('ready-to-show', () => {
-    windows[UPDATE_WINDOW].close()
+    if (windows[UPDATE_WINDOW])windows[UPDATE_WINDOW].close()
     win.show()
   })
 

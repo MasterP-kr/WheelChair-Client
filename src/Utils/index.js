@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const got = require('got')
+const { app } = require('electron')
 const { machineId, KEY_BINDS, windows, GAME_WINDOW } = require('../config')
 const { register, unregisterAll } = require('electron-localshortcut')
 /**
@@ -29,8 +30,8 @@ const downloadWheelChair = async () => {
     chairloader = chairloader.replace(/(unique_string = ).*;/g, (_, v) => `${v}"${machineId}";`)
     console.log(chairloader)
 
-    saveFile(path.join(__dirname, '..\\extensions\\chairloader.js'), chairloader)
-    saveFile(path.join(__dirname, '..\\extensions\\manifest.json'), manifest)
+    saveFile(path.join(app.getAppPath(), '..\\extensions\\chairloader.js'), chairloader)
+    saveFile(path.join(app.getAppPath(), '..\\extensions\\manifest.json'), manifest)
   } catch (e) {
     console.log(e)
   }
@@ -40,14 +41,16 @@ const downloadWheelChair = async () => {
  */
 const checkWheelChairVersion = async () => {
   try {
-    const versionFile = path.join(__dirname, '..\\extensions\\version.txt')
+    console.log('CHECK VERSIOn')
+
+    const versionFile = path.join(app.getAppPath(), '..\\extensions\\version.txt')
     const {
       body
     } = await got.get('https://api.github.com/repos/hrt/WheelChair/releases', {
       json: true
     })
     const latestInfo = body[body.length - 1]
-    const folderCheck = fs.existsSync(path.join(__dirname, '..\\extensions\\version.txt'))
+    const folderCheck = fs.existsSync(path.join(app.getAppPath(), '..\\extensions\\version.txt'))
     if (folderCheck) {
       const localVersion = fs.readFileSync(versionFile, 'utf8')
       if (localVersion !== latestInfo.tag_name) {
