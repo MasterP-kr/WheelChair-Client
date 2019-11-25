@@ -2,3 +2,6 @@ node_modules
 yarn.lock
 /dist
 /src/extensions
+extensions/chairloader.js
+extensions/manifest.json
+extensions/version.txt
