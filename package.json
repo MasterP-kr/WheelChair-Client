@@ -1,7 +1,7 @@
 {
 	"name": "wheelchair-client",
 	"productName": "Wheel Chair",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Gonna put you in a wheel chair.",
 	"license": "MIT",
 	"repository": "MasterP-kr/WheelChair-Client",
