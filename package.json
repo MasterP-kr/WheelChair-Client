@@ -1,7 +1,7 @@
 {
 	"name": "wheelchair-client",
 	"productName": "Wheel Chair",
-	"version": "0.0.3",
+	"version": "0.0.2",
 	"description": "Gonna put you in a wheel chair.",
 	"license": "MIT",
 	"repository": "MasterP-kr/WheelChair-Client",
@@ -15,7 +15,7 @@
 		"postinstall": "electron-builder install-app-deps",
 		"start": "electron ./src",
 		"pack": "electron-builder --dir",
-		"release": "electron-builder --macos --linux --windows --x64 --ia32",
+		"release": "electron-builder --macos --linux --windows ",
 		"lint": "eslint ."
 	},
 	"dependencies": {
@@ -91,6 +91,17 @@
 				"deb"
 			],
 			"category": "Network;Chat"
-		}
+		},
+		"win": {
+			"target": [
+			  {
+				"target": "nsis",
+				"arch": [
+				  "x64",
+				  "ia32"
+				]
+			  }
+			]
+		  }
 	}
 }
