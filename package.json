@@ -15,7 +15,7 @@
 		"postinstall": "electron-builder install-app-deps",
 		"start": "electron ./src",
 		"pack": "electron-builder --dir",
-		"release": "electron-builder --macos --linux --windows",
+		"release": "electron-builder --macos --linux --windows --x64 --ia32",
 		"lint": "eslint ."
 	},
 	"dependencies": {
