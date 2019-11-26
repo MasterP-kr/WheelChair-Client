@@ -1,7 +1,7 @@
 {
 	"name": "wheelchair-client",
 	"productName": "Wheel Chair",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Gonna put you in a wheel chair.",
 	"license": "MIT",
 	"repository": "MasterP-kr/WheelChair-Client",
@@ -91,17 +91,6 @@
 				"deb"
 			],
 			"category": "Network;Chat"
-		},
-		"win": {
-			"target": [
-			  {
-				"target": "nsis",
-				"arch": [
-				  "x64",
-				  "ia32"
-				]
-			  }
-			]
-		  }
+		}
 	}
 }

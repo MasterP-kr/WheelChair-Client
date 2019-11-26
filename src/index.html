@@ -68,6 +68,7 @@
 				if (version !== versionHash) {
 					versionContainer.classList.add("hide")
 					updateButton.classList.remove("hide")
+					updateButton.setAttribute("version",version)
 				} else {
 					ipcRenderer.send('start-game')
 				}
