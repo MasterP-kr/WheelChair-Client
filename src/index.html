@@ -71,13 +71,11 @@
 					versionContainer.classList.add("hide")
 					updateButton.classList.remove("hide")
 					updateButton.setAttribute("version", version)
-					ipcRenderer.send('start-game')
 				} else {
 					ipcRenderer.send('start-game')
 				}
 			})
 			.catch(error => {
-				console.log(error)
 				messages.innerText = "Error Getting Version";
 			})
 

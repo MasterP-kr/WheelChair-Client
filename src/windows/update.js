@@ -22,7 +22,6 @@ module.exports = async () => {
 
   win.loadFile(path.join(path.resolve(__dirname, '..'), 'index.html'))
 
-  win.webContents.openDevTools({ mode: 'undocked' })
   win.on('ready-to-show', () => {
     win.show()
   })

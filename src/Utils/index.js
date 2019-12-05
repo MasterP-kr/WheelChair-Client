@@ -1,7 +1,6 @@
 const fs = require('fs')
 const path = require('path')
 const got = require('got')
-const { app } = require('electron')
 const { machineId, KEY_BINDS, windows, GAME_WINDOW } = require('../config')
 const { register, unregisterAll } = require('electron-localshortcut')
 /**
