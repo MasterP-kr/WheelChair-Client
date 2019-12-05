@@ -1,6 +1,6 @@
 const path = require('path')
 
-const { BrowserWindow, ipcMain, app } = require('electron')
+const { BrowserWindow, ipcMain } = require('electron')
 const { windows, UPDATE_WINDOW, GAME_WINDOW } = require('../config')
 
 const createGameWindow = require('./game')
@@ -19,6 +19,10 @@ module.exports = async () => {
     }
   })
   win.setMenu(null)
+
+  win.loadFile(path.join(path.resolve(__dirname, '..'), 'index.html'))
+
+  win.webContents.openDevTools({ mode: 'undocked' })
   win.on('ready-to-show', () => {
     win.show()
   })
@@ -29,6 +33,6 @@ module.exports = async () => {
     windows[GAME_WINDOW] = await createGameWindow()
     initKeyBinds()
   })
-  await win.loadURL(path.join(__dirname, '..\\index.html') + '#v' + app.getVersion())
+
   return win
 }

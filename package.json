@@ -1,7 +1,7 @@
 {
 	"name": "wheelchair-client",
 	"productName": "Wheel Chair",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "Gonna put you in a wheel chair.",
 	"license": "MIT",
 	"repository": "MasterP-kr/WheelChair-Client",
@@ -28,7 +28,6 @@
 		"electron-updater": "^4.2.0",
 		"electron-util": "^0.13.0",
 		"got": "^9.6.0",
-		"mousetrap": "^1.6.3",
 		"node-machine-id": "^1.1.12"
 	},
 	"devDependencies": {
@@ -57,7 +56,7 @@
 		"files": [
 			"./src/**/*",
 			"./build/**/*"
-		  ],
+		],
 		"appId": "com.none.WheelChair",
 		"publish": [
 			{

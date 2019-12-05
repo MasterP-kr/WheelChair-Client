@@ -15,8 +15,8 @@ unhandled()
 // checks if extension folder is created
 // if not create
 try {
-  if (!fs.existsSync(path.join(app.getAppPath(), '..\\extensions'))) {
-    fs.mkdirSync(path.join(app.getAppPath(), '..\\extensions'))
+  if (!fs.existsSync(path.join(__dirname, 'extensions'))) {
+    fs.mkdirSync(path.join(__dirname, 'extensions'))
   }
 } catch (e) {}
 

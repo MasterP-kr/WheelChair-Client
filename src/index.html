@@ -40,7 +40,7 @@
 <body class="center">
 	<h1>Wheel Chair</h1>
 	<div class="container center" id="version-container">
-		Current version: <span id="version">vX.Y.Z</span>
+		Current version: <span id="version">Loading...</span>
 	</div>
 	<button class="hide " id="update-button">
 		Update Client
@@ -48,32 +48,36 @@
 	<div id="messages"></div>
 	<script>
 		const {
-			ipcRenderer
+			ipcRenderer,
+			remote
 		} = require('electron')
-
+		const curVersion = remote.app.getVersion();
 		const message = document.getElementById('version');
 		const versionContainer = document.getElementById('version-container');
 		const updateButton = document.getElementById('update-button');
 		const messages = document.getElementById('messages');
-		let versionHash = window.location.hash.substring(1).replace("v", "");
-		message.innerText = versionHash;
+		message.innerHTML = curVersion
 		updateButton.addEventListener("click", () => {
-			window.open(`https://github.com/MasterP-kr/WheelChair-Client/releases/tag/v${updateButton.getAttribute("version")}`)
+			window.open(
+				`https://github.com/MasterP-kr/WheelChair-Client/releases/tag/v${updateButton.getAttribute("version")}`
+				)
 		})
 		fetch('https://raw.githubusercontent.com/MasterP-kr/WheelChair-Client/master/package.json')
 			.then(data => data.json())
 			.then(({
 				version
 			}) => {
-				if (version !== versionHash) {
+				if (version !== curVersion) {
 					versionContainer.classList.add("hide")
 					updateButton.classList.remove("hide")
-					updateButton.setAttribute("version",version)
+					updateButton.setAttribute("version", version)
+					ipcRenderer.send('start-game')
 				} else {
 					ipcRenderer.send('start-game')
 				}
 			})
 			.catch(error => {
+				console.log(error)
 				messages.innerText = "Error Getting Version";
 			})
 
