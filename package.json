@@ -27,7 +27,7 @@
 		"electron-unhandled": "^3.0.1",
 		"electron-updater": "^4.2.0",
 		"electron-util": "^0.13.0",
-		"got": "^9.6.0",
+		"got": "^11.8.5",
 		"node-machine-id": "^1.1.12"
 	},
 	"devDependencies": {
